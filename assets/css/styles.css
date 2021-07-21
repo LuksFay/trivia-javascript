@@ -1,0 +1,174 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url(background.jpg);
+}
+#game-name-id{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 300px;
+}
+.decoration{
+    font-family: 'La Belle Aurore', cursive;
+    color: #353434ab;
+    user-select: none;
+}
+.game-name-h1{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 8rem;
+    text-shadow: -1px 8px 11px rgba(0,0,0,0.91);
+}
+.button-div{
+    text-align: center;
+    width: 207px;
+    background-color: #658441;
+    border-radius: 50px;
+    -webkit-box-shadow: 1px 11px 23px 1px #000000; 
+    box-shadow: 1px 11px 23px 1px #000000;
+    
+}
+.button-button{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    background: none;
+    border: none;
+    color: #fff;
+}
+.button-div:active{
+    transform: translateY(3px)
+}
+.game-name-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#buttons-id{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+#question{
+    height: 90px;
+    width: 360px;
+    background-color: #fff;
+    border-radius: 20px;
+    -webkit-box-shadow: 1px 11px 23px 1px #000000; 
+    box-shadow: 1px 11px 23px 1px #000000;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    text-align: center;
+}
+#opcionA, #opcionB, #opcionC{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.question-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 25px;
+}
+.option-div{
+    display: flex;
+    -webkit-box-shadow: 1px 11px 23px 1px #000000; 
+    box-shadow: 1px 11px 23px 1px #000000;
+    border-radius: 50px;
+}
+.option-div:active{
+    transform: translateY(3px)
+}
+.option{
+    text-align: center;
+    justify-content: center;
+    width: 60px;
+    height: 100%;
+    background-color: #658441;
+    border-radius: 50px 0px 0px 50px;
+    
+}
+.option p{
+    color: #fff;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+}
+.option-button{
+    width: 200px;
+    border: none;
+    background-color: #fff;
+    border-radius: 0px 50px 50px 0px;
+}
+#score-section{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+    margin-right: 20px;
+    padding-top: 30px;
+}
+.score{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #658441;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    -webkit-box-shadow: 1px 11px 23px 1px #000000; 
+    box-shadow: 1px 11px 23px 1px #000000;
+    font-family:'Bebas Neue', cursive;
+    font-size: 1.5rem;
+}
+.decoration-score{
+    margin-right: 70px;
+}
+#check{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -140px;
+}
+.correcto{
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    background-color: #35e835e6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 9rem;
+    visibility:hidden;
+}
+
+.incorrecto{
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    background-color: rgba(232, 53, 53, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 9rem;
+    visibility: hidden;
+}

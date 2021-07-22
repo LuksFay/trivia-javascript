@@ -2,11 +2,16 @@ const $pregunta = document.querySelector('#question'),
       $opcionA = document.querySelector('#opcionA'),
       $opcionB = document.querySelector('#opcionB'),
       $opcionC = document.querySelector('#opcionC'),
-      $score = document.querySelector('#score');
-      $check_correcto = document.querySelector('.correcto')
-      $check_incorrecto = document.querySelector('.incorrecto')
+      $score = document.getElementById('score');
+      $check_correcto = document.querySelector('.correcto'),
+      $check_incorrecto = document.querySelector('.incorrecto'),
+      $botones = document.querySelectorAll("button");
+    
 
-let puntaje = 0;
+let contador = 0;
+
+let pregunta = 1;
+
 const pregunta1 = {
     pregunta: '¿En que año fue lanzado el video juego PONG?',
     opcion_A: '1982',
@@ -29,53 +34,76 @@ const pregunta3 = {
     correcta: 'The bomb has been planted!'
 }
 
-$pregunta.innerHTML = pregunta1.pregunta;
-$opcionA.innerHTML = pregunta1.opcion_A;
-$opcionB.innerHTML = pregunta1.opcion_B;
-$opcionC.innerHTML = pregunta1.opcion_C;
 
-
-// DECLARAR FUNCION DE PREGUNTA
-
-function preguntaFun (pregunta1){
-    if (pregunta1.value === pregunta1.correcta){
-        $check_correcto.style.visibility = "visible"; 
-    }else{
-        $check_incorrecto.style.visibility = "visible";
-    }
+function printPregunta(pregunta){
+    console.log('la pregunta es', pregunta );
+    $pregunta.innerHTML = pregunta.pregunta;
+    $opcionA.innerHTML = pregunta.opcion_A;
+    $opcionB.innerHTML = pregunta.opcion_B;
+    $opcionC.innerHTML = pregunta.opcion_C;
 }
 
-$opcionA.addEventListener('click', (pregunta1) =>{
-    preguntaFun(pregunta1);
-})
-$opcionB.addEventListener('click', (pregunta1) =>{
-    preguntaFun(pregunta1);
-})
-$opcionC.addEventListener('click', (pregunta1) =>{
-    preguntaFun(pregunta1);
-})
-
-
-
-
-// este evento cambia el color de la respuesta correcta
-// este evento cambia el color de la respuesta incorrecta
-// opcionA.addEventListener('click', (evento) =>{
-//     console.log(evento);
+function cambio(){
+    pregunta=pregunta+1;
+    $check_correcto.style.visibility = "hidden";
+    $check_incorrecto.style.visibility = "hidden";
+    $opcionA.disabled=false;
+    $opcionB.disabled=false;
+    $opcionC.disabled=false;
+    console.log(pregunta);
+    if(pregunta===2){
+        printPregunta(pregunta2);
+    }else if(pregunta===3){
+        printPregunta(pregunta3);
+    }else{
+        alert(`TERMINASTE! TU PUNTAJE ES ${contador}`);
+    }
     
-    // if (pregunta1.opcion_A === pregunta1.correcta){
-    //     document.querySelector('#opcionA').style.backgroundColor = '#35e835e6' ;
-    // }else{
-    //     document.querySelector('#opcionA').style.backgroundColor = 'rgba(232, 53, 53, 0.9)' ;
-    // }
-// })
-// opcionC.addEventListener('click', () =>{
-//     if (pregunta1.opcion_C === pregunta1.correcta){
-//         document.querySelector('#opcionC').style.backgroundColor = '#35e835e6' ;
-//     }else{
-//         document.querySelector('#opcionC').style.backgroundColor = 'rgba(232, 53, 53, 0.9)' ;
-//     }
-// })
-// const pregunta = () =>{
+}
 
-// }
+function preguntaFun(respuesta, pregunta){
+    console.log(respuesta);
+    console.log(pregunta.correcta);
+    if(respuesta===pregunta.correcta){
+        $check_correcto.style.visibility = "visible"; 
+        (contador=contador+10);
+        $score.textContent = contador;    
+        $opcionA.disabled=true;
+        $opcionB.disabled=true;
+        $opcionC.disabled=true;
+        setTimeout(cambio,1000);
+        
+    }else{
+        $check_incorrecto.style.visibility = "visible";
+        (contador--);
+        $score.textContent = contador;
+        $opcionA.disabled=true;
+        $opcionB.disabled=true;
+        $opcionC.disabled=true;
+        setTimeout(cambio,1000);
+        
+    }
+ }
+
+
+if(pregunta===1){
+    printPregunta(pregunta1);
+}
+
+$botones.forEach(element => {
+    element.addEventListener('click', (e)=>{
+        if (pregunta===1){preguntaFun(e.target.innerText, pregunta1);}
+        else if(pregunta===2){preguntaFun(e.target.innerText, pregunta2);}
+        else if(pregunta===3){preguntaFun(e.target.innerText, pregunta3);}
+        
+             })
+});
+
+
+// $main.addEventListener('click', (e)=>{
+//     preguntaFun(e.target.innerText, pregunta1);
+// })
+
+  //'#35e835e6' 
+ // 'rgba(232, 53, 53, 0.9)' 
+ 
